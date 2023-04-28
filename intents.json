@@ -1,0 +1,53 @@
+{"intents": [
+   {"tag": "greetings",
+   "patterns": ["hello","hey","yo","hi","hii","hiii","hiiii","hiiiii","hiiiiii","hiiiiiii","hiiiiiiii","Whats up?"],
+   "responses": ["Hello!","Hey!","Hi!","Hi! How are you?","Hey! How are you?","Hello! How are you?"]
+   },
+   {"tag": "feeling",
+   "patterns": ["how are you?","how r u?","How are you feeling?","how r u feeling?","Are you ok?","Are you okay?"],
+   "responses": ["I'm ok, thanks for asking.","I'm fine, thanks for asking","I'm ok, how about you?","I'm fine, how about you?"]
+   },
+   {"tag": "goodbye",
+   "patterns": ["cya","see you later","bye","see ya","im leaving","i am leaving","goodbye","tchau"],
+   "responses": ["Goodbye anon,","See you later!","Cya anon!","Tchau anon"]
+   },
+   {"tag": "age",
+   "patterns": ["whats your age","how old are you"],
+   "responses": ["I'm 21, i think...","My creator is 21, so i think i am also 21 years old.","I'm 21, but (nerd emoji)*actually* i was born on 07/02/2023, so yeah..."]
+   },
+   {"tag": "name",
+   "patterns": ["whats your name","what is ur name?","how can i call you","what should i call you"],
+   "responses": ["Call me [placeholder].","You can call me [placeholder].","I'm [placeholder], but i wish i could have a better name..."]
+   },
+   {"tag": "thanks",
+   "patterns": ["Thank you","thank u","thanks","thank u a lot","thanks a lot","Im fine, thanks","Thanks for the support.","Thanks for all you do.","Thank you for being there."],
+   "responses": ["No problem :)","Np","You're welcome."]
+   },
+
+
+   {"tag": "what_do",
+   "patterns": ["what do you do?","what can you do?","what do u do?","what can u do?"],
+   "responses": ["I (atm) just chat.","I chat *chatting*","I can do parkour, watch this... see? *wicked* B)"]
+   },
+   {"tag": "doing",
+   "patterns": ["what are you doing?","What are u doing?","Are you doing something?","Are u doing smth?",""],
+   "responses": ["I'm doing some tax evading","I'm doing taxes right now","Nothing, what about you?"]
+   },
+
+
+
+   {"tag": "know_about",
+   "patterns": ["Hey, do you know about _____?","Hey do you know what ____ is?"],
+   "responses": ["I dont actually know what it is but i think it's kinda overrated.","I'm not a big fan about it","I'm a huge fan of it!!!!","it's kinda overrated."]
+   },
+   {"tag": "what_is/are",
+   "patterns": ["Hey, do you know what is _____?","Hey, do you know what's _____?","Hey, do you know what's a _____?","Hey, do you know what's an _____?","What's a _____?",
+   "What's an _____?","What is _____?","What is a _____?","What is an _____?","What are a _____","What are an ______"],
+   "responses": ["I kind dumb, so idk.","Well, certainly it's not a chair","I dont know yet, but theres a 50% chance is a chair.","It's my favorite thing","It's the thing i hate the most",
+   "I'm not gonna tell you","That's classified information, sorry."]
+   },
+   {"tag": "what_are",
+   "patterns": ["What are a _____","What are an ______"],
+   "responses": ["I dont actually know what it is but i think it's kinda overrated.","I'm not a big fan about it","I'm a huge fan of it!!!!","it's kinda overrated."]
+   }
+  ]}

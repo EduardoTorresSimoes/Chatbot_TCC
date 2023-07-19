@@ -11,6 +11,18 @@
     {
       "question": "tudo bem ?",
       "answer": "tudo sim, e voce?"
+    },
+    {
+      "question": "Como vai ?",
+      "answer": "vou bem, obrigado"
+    },
+    {
+      "question": "Bom dia!",
+      "answer": "Ol\u00e1, bom dia!"
+    },
+    {
+      "question": "Tudo \u00f3timo, o que est\u00e1 fazendo?",
+      "answer": "Estou fazendo nada"
     }
   ]
 }

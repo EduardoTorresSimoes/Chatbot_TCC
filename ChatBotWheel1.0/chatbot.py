@@ -2,6 +2,7 @@ import random
 import json
 import pickle
 import numpy as np
+import re
 
 import nltk
 from nltk.stem import WordNetLemmatizer
@@ -30,6 +31,8 @@ def bag_of_words(sentence):
                 bag[i] = 1
     return np.array(bag)
 
+context = []
+
 def predict_class(sentence):
     bow = bag_of_words(sentence)
     res = model.predict(np.array([bow]))[0]
@@ -40,10 +43,18 @@ def predict_class(sentence):
     return_list = []
     for r in results:
         return_list.append({'intents': classes[r[0]], 'probability': str(r[1])})
+
+    context.append({'sentence': sentence, 'intents_list': return_list})
     return return_list
 
 def get_response(intents_list, intents_json):
     tag = intents_list[0]['intents']
+
+    for context_item in reversed(context):
+        if context_item['sentence'] == message:
+            tag = context_item['intents_list'][0]['intents']
+            break
+
     list_of_intents = intents_json['intents']
     for i in list_of_intents:
         if i['tag'] == tag:
@@ -53,6 +64,24 @@ def get_response(intents_list, intents_json):
 
 print('Go, bot is running!')
 
+def extract_name_and_email(text):
+    # Função para extrair nome e email do texto usando expressões regulares
+    
+    user_name = None
+    user_email = None
+    
+    # Verifica se o texto contém um nome usando regex
+    name_match = re.search(r"\b(?:[A-Z][a-z]*\s){1,2}[A-Z][a-z]*\b", text)
+    if name_match:
+        user_name = name_match.group()
+    
+    # Verifica se o texto contém um email usando regex
+    email_match = re.search(r"\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b", text)
+    if email_match:
+        user_email = email_match.group()
+    
+    return user_name, user_email
+
 # RUNNING BOT
 finish = False
 while not finish:
@@ -60,6 +89,14 @@ while not finish:
     if message == "STOP":
         finish = True
     else:
+        name, email = extract_name_and_email(message)
+        if name:
+            print("Nome reconhecido:", name)
+        if email:
+            print("Email reconhecido:", email)
+
+
         ints = predict_class(message)
         res = get_response(ints, intents)
         print (res)
+

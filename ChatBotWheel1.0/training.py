@@ -4,14 +4,13 @@ import pickle
 import numpy as np
 
 import nltk
-nltk.download()
 from nltk.stem import WordNetLemmatizer
 
 from tensorflow import keras
 
 from keras.models import Sequential
 from keras.layers import Dense, Activation, Dropout
-from keras.optimizers import SGD
+from keras.optimizers.legacy import SGD
 
 # Inicialização do lemmatizer (usado para normalizar as palavras).
 lemmatizer = WordNetLemmatizer()
@@ -26,11 +25,11 @@ documents = []
 ignore_letters = ['.', '!', '?', ',', '_']
 
 # Iteração através dos intents e seus padrões para processar as palavras.
-for intent in intents['intents']:
+for intent in intents['intents']: 
     for pattern in intent['patterns']:
         # Tokenização das palavras do padrão.
-        word_list = nltk.word_tokenize(pattern)
-        words.extend(word_list)
+        word_list = nltk.word_tokenize(pattern) # Tokeniza as "perguntas" do usuário 
+        words.extend(word_list) # Adiciona a lista tokenizada word_list à "words"
         documents.append((word_list, intent['tag']))
         # Adição da classe ao conjunto de classes, se ainda não estiver presente.
         if intent['tag'] not in classes:
@@ -113,6 +112,8 @@ def bow(sentence, words, show_details=True):
                     print("found in bag: %s" % w)
     return (np.array(bag))
 
+context = []
+
 # Função para prever a classe de uma sentença usando o modelo treinado e a função bow.
 def predict_class(sentence, model):
     p = bow(sentence, words, show_details=False)
@@ -123,3 +124,4 @@ def predict_class(sentence, model):
     return_list = []
     for r in results:
         return_list.append
+    context.append((sentence, return_list))

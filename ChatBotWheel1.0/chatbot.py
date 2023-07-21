@@ -62,39 +62,53 @@ def get_response(intents_list, intents_json):
             break
     return result
 
-print('Go, bot is running!')
 
-def extract_name_and_email(text):
-    # Função para extrair nome e email do texto usando expressões regulares
+def extract_info(text):
     
-    user_name = None
-    user_email = None
+    user_name    = None
+    user_email   = None
+    user_cpf     = None
+    user_cnumber = None
     
-    # Verifica se o texto contém um nome usando regex
-    name_match = re.search(r"\b(?:[A-Z][a-z]*\s){1,2}[A-Z][a-z]*\b", text)
+    name_match = re.search(r"\b(?:[A-Z][a-zA-ZÀ-ÿ'-]*(?:\s(?:d[aeio]s?\s)?[A-Z][a-zA-ZÀ-ÿ'-]*)+)\b", text)
+    #name_match = re.search(r"\b(?:[A-Z][a-zA-ZÀ-ÿ'-]*(?:\s(?:de\s)?[A-Z][a-zA-ZÀ-ÿ'-]*)+)\b", text)   //Funciona Nome completo e com "de" (mas não "da" "di" "do")
     if name_match:
         user_name = name_match.group()
-    
-    # Verifica se o texto contém um email usando regex
+
     email_match = re.search(r"\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b", text)
     if email_match:
         user_email = email_match.group()
-    
-    return user_name, user_email
 
-# RUNNING BOT
+    cpf_match = re.search(r"\b(?:\d{3}\.\d{3}\.\d{3}-\d{2}|\d{11}|\d{3}\ \d{3}\ \d{3} \d{2})\b", text)
+    if cpf_match:
+        user_cpf = cpf_match.group()
+    
+    cnumber_match = re.search(r"\b(?:\(\d{2}\)\s\d{5}-\d{4}|\d{2}\s\d{5}\s\d{4}|\d{2}\s\d{9})\b|\d{2}\s\d{5}-\d{4}", text)
+    if cnumber_match:
+        user_cnumber = cnumber_match.group()
+
+
+    
+    return user_name, user_email, user_cpf, user_cnumber
+
+
+print('Go, bot is running!')
 finish = False
 while not finish:
     message = input("> ")
     if message == "STOP":
         finish = True
     else:
-        name, email = extract_name_and_email(message)
+        name, email, cpf, number = extract_info(message)
+
         if name:
             print("Nome reconhecido:", name)
         if email:
-            print("Email reconhecido:", email)
-
+            print("Email reconhecido:", email)  
+        if cpf:
+            print("CPF reconhecido:", cpf)  
+        if number:
+            print("Tel. reconhecido:", number)
 
         ints = predict_class(message)
         res = get_response(ints, intents)

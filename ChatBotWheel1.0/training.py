@@ -89,39 +89,7 @@ sgd = SGD(lr=0.01, decay=1e-6, momentum=0.9, nesterov=True)
 model.compile(loss='categorical_crossentropy', optimizer=sgd, metrics=['accuracy'])
 
 # Treinamento do modelo usando os dados de treinamento.
-hist = model.fit(np.array(train_x), np.array(train_y), epochs=50, batch_size=5, verbose=1)
+hist = model.fit(np.array(train_x), np.array(train_y), epochs=200, batch_size=5, verbose=1)
 
 # Salvando o modelo treinado em um arquivo HDF5.
 model.save('chatbot_model.h5', hist)
-
-# Função para limpar a sentença (normalização e tokenização).
-def clean_up_sentence(sentence):
-    sentence_words = nltk.word_tokenize(sentence)
-    sentence_words = [lemmatizer.lemmatize(word.lower()) for word in sentence_words]
-    return sentence_words
-
-# Função para criar a bag of words da sentença usando as palavras e a função clean_up_sentence.
-def bow(sentence, words, show_details=True):
-    sentence_words = clean_up_sentence(sentence)
-    bag = [0] * len(words)
-    for s in sentence_words:
-        for i, w in enumerate(words):
-            if w == s:
-                bag[i] = 1
-                if show_details:
-                    print("found in bag: %s" % w)
-    return (np.array(bag))
-
-context = []
-
-# Função para prever a classe de uma sentença usando o modelo treinado e a função bow.
-def predict_class(sentence, model):
-    p = bow(sentence, words, show_details=False)
-    res = model.predict(np.array([p]))[0]
-    ERROR_THRESHOLD = 0.25
-    results = [[i, r] for i, r in enumerate(res) if r > ERROR_THRESHOLD]
-    results.sort(key=lambda x: x[1], reverse=True)
-    return_list = []
-    for r in results:
-        return_list.append
-    context.append((sentence, return_list))

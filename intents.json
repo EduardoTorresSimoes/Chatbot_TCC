@@ -11,20 +11,19 @@
    
    {"tag": "ProtocoloIntegrado",
    "patterns": ["Protocolo Integrado","1 - Protocolo Integrado","1-Protocolo Integrado","Problema com protocolo integrado","Estou com problema com protocolo integrado"],
-   "responses": ["Em que posso ajudar envolvendo Protocolo Integrado? (Ex: Cadastramento, Login(Acesso) , problemas gerais..."],
-   "context": "protocoloIntegrado"
+   "responses": ["Em que posso ajudar envolvendo Protocolo Integrado? (Ex: Cadastramento, Login, problemas gerais..."],
+   "context": "protocoloIntegrado1"
    },
    {"tag": "CadastrarProtocoloIntegrado",
    "patterns": ["Quero acesso ao Protocolo Integrado","Acesso ao Protocolo Integrado","Preciso de acesso ao protocolo integrado","Desejo acesso ao protocolo integrado",
                 "Cadastrar protocolo integrado","Desejo fazer cadastro no protocolo integrado","Fazer cadastro no protocolo integrado","Quero fazer um cadastro no protocolo integrado"],
    "responses": ["Será necessário preencher formulário com os dados do usuário, assinado pelo secretário e encaminhar para o setor de Tecnologia de Informação.\nSegue o formulário para preenchimento."],
-   "context": "protocoloIntegrado"
+   "context": "protocoloIntegrado2"
    },
    {"tag": "LoginProtocoloIntegrado",
-   "patterns": ["Problema de Login do protocolo integrado","Problema de Login no protocolo integrado","Login no protocolo integrado","Login do protocolo integrado",
-                "Esqueci a senha do protocolo integrado","Não consigo acessar o Protocolo Integrado","Esqueci minha senha do Protocolo Integrado","Esqueci minha senha no Protocolo Integrado",
-                "Preciso de ajuda com a senha do protocolo integrado"],
-   "responses": ["Iremos abrir um chamado referente ao problema descrito."],
-   "context": "protocoloIntegrado"
+   "patterns": ["Problema de Login no protocolo integrado","Login no protocolo integrado","Esqueci a senha do protocolo integrado","Não consigo acessar o Protocolo Integrado",
+                "Esqueci minha senha do Protocolo Integrado","Preciso de ajuda com a senha do protocolo integrado","Problema de acesso ao protocolo integrado"],
+   "responses": ["Entendido, para ser aberto o chamado será necessário das seguintes informações: "],
+   "context": "protocoloIntegrado3"
    }
   ]}

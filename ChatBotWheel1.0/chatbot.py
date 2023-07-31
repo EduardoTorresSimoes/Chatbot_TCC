@@ -31,7 +31,24 @@ def bag_of_words(sentence):
                 bag[i] = 1
     return np.array(bag)
 
-context = []
+
+#--------------------------------------------------------------------#
+def handle_context(context):
+    actions = {
+        "protocoloIntegrado1": "funcao_para_protocolo_integrado_1",
+        "protocoloIntegrado2": "funcao_para_protocolo_integrado_2",
+        "protocoloIntegrado3": "funcao_para_protocolo_integrado_3"
+        # Adicione mais contextos e suas respectivas funções aqui
+    }
+
+    # Verifica se o contexto está mapeado para alguma ação
+    if context in actions:
+        # Executa a função associada ao contexto
+        actions[context]()
+    else:
+        # Caso o contexto não esteja mapeado, faça alguma ação padrão ou exiba uma mensagem de erro
+        print("Contexto não mapeado: {}".format(context))
+#--------------------------------------------------------------------#
 
 def predict_class(sentence):
     bow = bag_of_words(sentence)
@@ -44,21 +61,17 @@ def predict_class(sentence):
     for r in results:
         return_list.append({'intents': classes[r[0]], 'probability': str(r[1])})
 
-    context.append({'sentence': sentence, 'intents_list': return_list})
     return return_list
 
 def get_response(intents_list, intents_json):
     tag = intents_list[0]['intents']
-
-    for context_item in reversed(context):
-        if context_item['sentence'] == message:
-            tag = context_item['intents_list'][0]['intents']
-            break
-
     list_of_intents = intents_json['intents']
     for i in list_of_intents:
         if i['tag'] == tag:
             result = random.choice(i['responses'])
+            #if "context" in i:
+            #    context = i["context"]
+            #    handle_context(context)
             break
     return result
 
@@ -71,7 +84,6 @@ def extract_info(text):
     user_cnumber = None
     
     name_match = re.search(r"\b(?:[A-Z][a-zA-ZÀ-ÿ'-]*(?:\s(?:d[aeio]s?\s)?[A-Z][a-zA-ZÀ-ÿ'-]*)+)\b", text)
-    #name_match = re.search(r"\b(?:[A-Z][a-zA-ZÀ-ÿ'-]*(?:\s(?:de\s)?[A-Z][a-zA-ZÀ-ÿ'-]*)+)\b", text)   //Funciona Nome completo e com "de" (mas não "da" "di" "do")
     if name_match:
         user_name = name_match.group()
 
@@ -87,8 +99,6 @@ def extract_info(text):
     if cnumber_match:
         user_cnumber = cnumber_match.group()
 
-
-    
     return user_name, user_email, user_cpf, user_cnumber
 
 
@@ -113,4 +123,3 @@ while not finish:
         ints = predict_class(message)
         res = get_response(ints, intents)
         print (res)
-

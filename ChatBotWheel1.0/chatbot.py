@@ -38,15 +38,11 @@ def handle_context(context):
         "protocoloIntegrado1": "funcao_para_protocolo_integrado_1",
         "protocoloIntegrado2": "funcao_para_protocolo_integrado_2",
         "protocoloIntegrado3": "funcao_para_protocolo_integrado_3"
-        # Adicione mais contextos e suas respectivas funções aqui
     }
 
-    # Verifica se o contexto está mapeado para alguma ação
     if context in actions:
-        # Executa a função associada ao contexto
         actions[context]()
     else:
-        # Caso o contexto não esteja mapeado, faça alguma ação padrão ou exiba uma mensagem de erro
         print("Contexto não mapeado: {}".format(context))
 #--------------------------------------------------------------------#
 

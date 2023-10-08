@@ -1,29 +1,98 @@
-{"intents": [
-   {"tag": "Saudacoes",
-   "patterns": ["Oi","Olá","Ola","Bom dia","Boa tarde","Boa noite"],
-   "responses": ["Olá, em que posso ajudar?"]
-   },
-   {"tag": "Menu",
-   "patterns": ["Quais minhas opções?","Quais minhas opcoes?","Quais as opçoes", "Em que você pode me ajudar?","Como pode me ajudar?","Em que pode me ajudar?","Preciso de ajuda",
-                "Preciso de ajuda com um problema"],
-   "responses": ["As opções de atendimento atuais são:\n1 - Protocolo Integrado\n2 - Problemas com computador/notebook\n3 - (A adicionar)"]
-   },
-   
-   {"tag": "ProtocoloIntegrado",
-   "patterns": ["Protocolo Integrado","1 - Protocolo Integrado","1-Protocolo Integrado","Problema com protocolo integrado","Estou com problema com protocolo integrado"],
-   "responses": ["Em que posso ajudar envolvendo Protocolo Integrado? (Ex: Cadastramento, Login, problemas gerais..."],
-   "context": "protocoloIntegrado1"
-   },
-   {"tag": "CadastrarProtocoloIntegrado",
-   "patterns": ["Quero acesso ao Protocolo Integrado","Acesso ao Protocolo Integrado","Preciso de acesso ao protocolo integrado","Desejo acesso ao protocolo integrado",
-                "Cadastrar protocolo integrado","Desejo fazer cadastro no protocolo integrado","Fazer cadastro no protocolo integrado","Quero fazer um cadastro no protocolo integrado"],
-   "responses": ["Será necessário preencher formulário com os dados do usuário, assinado pelo secretário e encaminhar para o setor de Tecnologia de Informação.\nSegue o formulário para preenchimento."],
-   "context": "protocoloIntegrado2"
-   },
-   {"tag": "LoginProtocoloIntegrado",
-   "patterns": ["Problema de Login no protocolo integrado","Login no protocolo integrado","Esqueci a senha do protocolo integrado","Não consigo acessar o Protocolo Integrado",
-                "Esqueci minha senha do Protocolo Integrado","Preciso de ajuda com a senha do protocolo integrado","Problema de acesso ao protocolo integrado"],
-   "responses": ["Entendido, para ser aberto o chamado será necessário das seguintes informações: "],
-   "context": "protocoloIntegrado3"
-   }
-  ]}
+{
+   "intents": [
+      {
+         "tag": "Saudacoes",
+         "patterns": [
+            "Oi",
+            "Ola",
+            "Bom dia",
+            "Boa tarde",
+            "Boa noite",
+            "Olá",
+            "Oi, tudo bem?",
+            "Como você está?",
+            "E aí?",
+            "Olá, como posso ajudar?"
+         ],
+         "responses": ["Olá, em que posso ajudar?"]
+      },
+      {
+         "tag": "Menu",
+         "patterns": [
+            "Quais minhas opções?",
+            "Quais as opções",
+            "Em que você pode me ajudar?",
+            "Como pode me ajudar?",
+            "Em que pode me ajudar?",
+            "Preciso de ajuda",
+            "Estou com problema",
+            "Estou com um problema",
+            "Preciso de ajuda com um problema",
+            "O que você pode fazer por mim?",
+            "Quais são as suas funcionalidades?"
+         ],
+         "responses": ["As opções de atendimento atuais são:\n1 - Protocolo Integrado\n2 - Problemas com computador/notebook\n3 - (A adicionar)"]
+      },
+      {
+         "tag": "ProtocoloIntegrado",
+         "patterns": [
+            "Protocolo integrado",
+            "1 - Protocolo Integrado",
+            "1-Protocolo Integrado",
+            "Problema com protocolo integrado",
+            "Estou com problema com o protocolo integrado",
+            "Ajuda com protocolo integrado",
+            "Problema no protocolo integrado",
+            "Questão envolvendo protocolo integrado",
+            "Preciso de assistência com o Protocolo Integrado",
+            "Problemas no meu acesso ao Protocolo Integrado"
+         ],
+         "responses": ["Em que posso ajudar envolvendo Protocolo Integrado? (Ex: Cadastramento, Acesso, problemas gerais...)"]
+      },
+      {
+         "tag": "CadastroPI",
+         "patterns": [
+            "Cadastrar protocolo integrado",
+            "Fazer cadastro no protocolo integrado",
+            "Criar conta no protocolo integrado",
+            "Como faço para me cadastrar?",
+            "Preciso de orientação para criar uma conta no Protocolo Integrado"
+         ],
+         "context": "CadastroPI"
+      },
+      {
+         "tag": "LoginPI",
+         "patterns": [
+            "Acesso ao protocolo integrado",
+            "Problema de Login no protocolo integrado",
+            "Login no protocolo integrado",
+            "Esqueci a senha do protocolo integrado",
+            "Não consigo acessar o Protocolo Integrado",
+            "Esqueci minha senha do Protocolo Integrado",
+            "Ajuda com a senha do protocolo integrado",
+            "Acessar protocolo integrado",
+            "Como posso fazer login no Protocolo Integrado?",
+            "Esqueci minha senha, o que devo fazer?"
+         ],
+         "context": "LoginPI"
+      },
+      {
+         "tag": "Outros",
+         "patterns": [
+            "O que mais você pode fazer?",
+            "Me conte mais sobre suas funções",
+            "Explique melhor o seu funcionamento",
+            "Quero saber mais",
+            "Qual é a sua especialidade?",
+            "Quais outros serviços você oferece?"
+         ],
+         "responses": ["Além dos serviços mencionados, posso ajudar com informações gerais, suporte técnico e muito mais envolvendo a TI da Prefeitura de Macaé. É só perguntar!"]
+      },
+      {
+         "tag": "NaoEntendi",
+         "patterns": [""],
+         "responses": ["Não entendi, poderia repetir a solicitação de outra maneira?"]
+      }
+
+   ]
+}

@@ -66,6 +66,7 @@ for document in documents:
     # Adição do par bag-of-words e vetor de saída ao conjunto de treinamento.
     training.append([bag, output_row])
 
+
 # Embaralhamento dos dados de treinamento.
 random.shuffle(training)
 

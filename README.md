@@ -3,7 +3,10 @@
 
 # Versão do Python: 3.11
     Para instalar todos os requerimentos do projeto apenas executar o comando:
-        pip install -r requirements.txt
+    ```
+    pip install -r requirements.txt
+    ```
+    
 
 # Funcionamento:
     intents.json: Arquivo com os dados de treinamento do modelo e funcionamento do Chatbot.

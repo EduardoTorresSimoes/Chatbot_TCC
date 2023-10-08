@@ -1,9 +1,11 @@
 # Chatbot_TCC
-    Chatbot destinado ao TCC de Eduardo Torres Simões, Faculdade Professor Miguel Ângelo da Silva Santos (FeMASS), 2023.
+Chatbot destinado ao TCC de Eduardo Torres Simões, Faculdade Professor Miguel Ângelo da Silva Santos (FeMASS), 2023.
 
 # Versão do Python: 3.11
-    Para instalar todos os requerimentos do projeto apenas executar o comando:
-    ```pip install -r requirements.txt```
+Para instalar todos os requerimentos do projeto apenas executar o comando:  
+```
+pip install -r requirements.txt
+```
     
 
 # Funcionamento:
@@ -15,4 +17,4 @@
     chatbot.py: Executa o chatbot.
 
 # Obs:
-    O Chatbot já está treinado, logo 'training.py' não é necessário ser executado (A não ser que queira treinar seu próprio modelo).
+O Chatbot já está treinado, logo 'training.py' não é necessário ser executado (A não ser que queira treinar seu próprio modelo).

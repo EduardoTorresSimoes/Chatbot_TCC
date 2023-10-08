@@ -2,8 +2,10 @@
     Chatbot destinado ao TCC de Eduardo Torres Simões, Faculdade Professor Miguel Ângelo da Silva Santos (FeMASS), 2023.
 
 # Versão do Python: 3.11
-    Para instalar todos os requerimentos do projeto apenas executar o comando:
-    ```pip install -r requirements.txt```
+Para instalar todos os requerimentos do projeto apenas executar o comando:
+```bash
+pip install -r requirements.txt
+```
     
 
 # Funcionamento:

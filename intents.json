@@ -53,6 +53,8 @@
          "tag": "CadastroPI",
          "patterns": [
             "Cadastrar protocolo integrado",
+            "Cadastrar no protocolo integrado",
+            "Cadastramento no protocolo integrado",
             "Fazer cadastro no protocolo integrado",
             "Criar conta no protocolo integrado",
             "Como faço para me cadastrar?",
@@ -61,7 +63,7 @@
          "context": "CadastroPI"
       },
       {
-         "tag": "LoginPI",
+         "tag": "AcessoPI",
          "patterns": [
             "Acesso ao protocolo integrado",
             "Problema de Login no protocolo integrado",
@@ -72,27 +74,10 @@
             "Ajuda com a senha do protocolo integrado",
             "Acessar protocolo integrado",
             "Como posso fazer login no Protocolo Integrado?",
-            "Esqueci minha senha, o que devo fazer?"
+            "Esqueci minha senha, o que devo fazer?",
+            "Problemas gerais no protocolo integrado"
          ],
-         "context": "LoginPI"
-      },
-      {
-         "tag": "Outros",
-         "patterns": [
-            "O que mais você pode fazer?",
-            "Me conte mais sobre suas funções",
-            "Explique melhor o seu funcionamento",
-            "Quero saber mais",
-            "Qual é a sua especialidade?",
-            "Quais outros serviços você oferece?"
-         ],
-         "responses": ["Além dos serviços mencionados, posso ajudar com informações gerais, suporte técnico e muito mais envolvendo a TI da Prefeitura de Macaé. É só perguntar!"]
-      },
-      {
-         "tag": "NaoEntendi",
-         "patterns": [""],
-         "responses": ["Não entendi, poderia repetir a solicitação de outra maneira?"]
+         "context": "AcessoPI"
       }
-
    ]
 }

@@ -37,18 +37,21 @@ def extract_info(text):
 
 def finalizar_atendimento():
     print("Deseja continuar com o atendimento?\n1 - Sim\n2 - Não")
-    opcao = input("\n> ")
+    opcao = input("\n> ").lower()
 
-    padrao_nao = r'2\s*-?\s*(Não|Nao)\.?'
-    padrao_sim = r'1\s*-?\s*Sim\.?'
+    padrao_nao = r'n(ao|ã[o])?|n'
+    padrao_sim = r'sim|s' 
 
-    if re.match(padrao_nao, opcao, re.IGNORECASE):
+    nao = re.search(padrao_nao, opcao)
+    sim = re.search(padrao_sim, opcao)
+
+    if nao:
         print("Entendo. Se precisar de assistência no futuro, não hesite em entrar em contato novamente. Tenha um bom dia!")
         sys.exit()
-    elif re.match(padrao_sim, opcao, re.IGNORECASE):
+    if sim:
         print("\nEm que mais posso ajudar?")
-    else:
-        print("Opção inválida. Por favor, escolha 'Sim' ou 'Não'.")
+
+    
     
 
 def protocolo_cadastro():
@@ -61,9 +64,9 @@ def protocolo_login():
     print("Entendido, para ser aberto o chamado será necessário das seguintes informações:")
     print("Nome;\nCPF;\nEmail Pessoal (ou Institucional);\nTelefone.")
     name, email, cpf, number = extract_info(input("> "))
-    print(f"Dados reconhecidos:\nNome: {name},\nCPF: {cpf},\nEmail: {email},\nNúmero: {number},\n\nQual seria o problema em questão?")
+    print(f"[Dados reconhecidos:]\n[Nome: {name}],\n[CPF: {cpf}],\n[Email: {email}],\n[Número: {number}],\n\nQual seria o problema em questão?")
     problem = input("> ")
-    print(problem)
+    print("[",problem,"]")
      # abrir_chamado(name,email,cpf,number,problem)
     print("Sua solicitação foi registrada e encaminhada a um técnico responsável para que seja devidamente solucionada.")
     finalizar_atendimento()

@@ -10,20 +10,25 @@ from nltk.stem import WordNetLemmatizer
 from tensorflow import keras
 from keras.models import load_model
 
+# Inicialização do lematizador
 lemmatizer = WordNetLemmatizer()
+# Carregamento de dados de intenções a partir de um arquivo JSON
 intents = json.loads(open("intents.json", encoding="utf8").read())
 
+# Carregamento de dados de palavras e classes previamente processadas de arquivos pickle
 words = pickle.load(open("words.pkl", "rb"))
 classes = pickle.load(open("classes.pkl", "rb"))
-model = load_model("chatbot_model.h5")
 
+# Carregamento de um modelo de chatbot pré-treinado
+model = load_model("chatbot_new_model.h5")
 
+# Função para limpar e processar a sentença de entrada
 def clean_up_sentence(sentence):
     sentence_words = nltk.word_tokenize(sentence)
     sentence_words = [lemmatizer.lemmatize(word) for word in sentence_words]
     return sentence_words
 
-
+# Função para criar um "saco de palavras" a partir da sentença de entrada
 def bag_of_words(sentence):
     sentence_words = clean_up_sentence(sentence)
     bag = [0] * len(words)
@@ -33,20 +38,20 @@ def bag_of_words(sentence):
                 bag[i] = 1
     return np.array(bag)
 
-
+# Função para lidar com contextos específicos
 def handle_context(context):
     actions = {
         "CadastroPI": ef.protocolo_cadastro,
-        "LoginPI": ef.protocolo_login
+        "AcessoPI": ef.protocolo_login
     }
 
     if context in actions:
-        result = actions.get(context)  
+        result = actions.get(context)
         return result()
     else:
         return "Contexto não mapeado: {}".format(context)
-    
 
+# Função para prever a intenção com base na sentença de entrada
 def predict_class(sentence):
     bow = bag_of_words(sentence)
     res = model.predict(np.array([bow]))[0]
@@ -60,7 +65,7 @@ def predict_class(sentence):
 
     return return_list
 
-
+# Função para obter a resposta com base nas intenções previstas
 def get_response(intents_list, intents_json):
     tag = intents_list[0]["intents"]
     list_of_intents = intents_json["intents"]
@@ -78,10 +83,9 @@ def get_response(intents_list, intents_json):
         if i["tag"] == "NaoEntendi":
             result = random.choice(i["responses"])
             return result
-    
     return "Desculpe, não entendi a mensagem. Poderia repetir de outra maneira?"
 
-
+# Início do chatbot
 print("Go, bot is running!")
 finish = False
 while not finish:
